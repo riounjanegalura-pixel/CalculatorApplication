@@ -42,9 +42,16 @@ namespace CalculatorApplication
             return a - b;
         }
 
-       
+        public void InvokeCalculateEvent(double a, double b)
+        {
+            if (_calculateEvent != null)
+            {
+                _calculateEvent(a, b);
+            }
         }
 
     }
+
+}
 
 
