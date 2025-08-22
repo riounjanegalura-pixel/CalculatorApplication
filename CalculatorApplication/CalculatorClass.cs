@@ -45,6 +45,11 @@ namespace CalculatorApplication
         {
             return a * b;
         }
+        public double GetQuotient(double a, double b)
+        {
+            return a / b;
+        }
+
 
 
         public void InvokeCalculateEvent(double a, double b)
