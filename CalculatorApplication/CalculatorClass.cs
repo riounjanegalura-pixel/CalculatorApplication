@@ -41,6 +41,11 @@ namespace CalculatorApplication
         {
             return a - b;
         }
+        public double GetProduct(double a, double b)
+        {
+            return a * b;
+        }
+
 
         public void InvokeCalculateEvent(double a, double b)
         {

@@ -26,11 +26,6 @@ namespace CalculatorApplication
             cbOperator.Items.Add("*");
             cbOperator.Items.Add("/");
 
-         
-            cbOperator.SelectedIndex = 0;
-
-
-
         }
 
         private void FrmCalculator_Load(object sender, EventArgs e)
@@ -54,7 +49,9 @@ namespace CalculatorApplication
 
                 double sumResult = cal.GetSum(num1, num2);
                 double differenceResult = cal.GetDifference(num1, num2);
-                textBox1.Text = $"Sum: {sumResult}\nDifference: {differenceResult}";
+                textBox1.Text = sumResult.ToString();
+                textBox1.Text = differenceResult.ToString();
+
 
                 cal._CalculateEvent -= cal.GetSum;
                 cal._CalculateEvent -= cal.GetDifference;

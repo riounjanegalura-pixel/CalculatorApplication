@@ -51,10 +51,7 @@
             this.cbOperator.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbOperator.FormattingEnabled = true;
             this.cbOperator.Items.AddRange(new object[] {
-            "+",
-            "-",
-            "*",
-            "/"});
+            ""});
             this.cbOperator.Location = new System.Drawing.Point(319, 85);
             this.cbOperator.Name = "cbOperator";
             this.cbOperator.Size = new System.Drawing.Size(74, 27);
