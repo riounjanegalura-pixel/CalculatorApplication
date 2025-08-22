@@ -10,5 +10,7 @@ namespace CalculatorApplication
     internal class CalculatorClass
     {
         public delegate T Formula<T>(T arg1);
+
+        public Formula<string> info;
     }
 }
