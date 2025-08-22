@@ -37,33 +37,80 @@ namespace CalculatorApplication
         {
             try
             {
+                
+                double num1 = double.Parse(txtBoxInput1.Text);
+                double num2 = double.Parse(txtBoxInput2.Text);
+
                
-                num1 = double.Parse(txtBoxInput1.Text);
-                num2 = double.Parse(txtBoxInput2.Text);
+                string selectedOperator = cbOperator.SelectedItem.ToString();
 
-             
-                cal._CalculateEvent += cal.GetSum;
-                cal._CalculateEvent += cal.GetDifference;
+               
+                double result = 0;
 
-                cal.InvokeCalculateEvent(num1, num2);
+                
+                switch (selectedOperator)
+                {
+                    case "+":
+                        
+                        cal._CalculateEvent += cal.GetSum;
+                        
+                        result = cal.GetSum(num1, num2);
+                      
+                        cal._CalculateEvent -= cal.GetSum;
+                        break;
 
-                double sumResult = cal.GetSum(num1, num2);
-                double differenceResult = cal.GetDifference(num1, num2);
-                textBox1.Text = sumResult.ToString();
-                textBox1.Text = differenceResult.ToString();
+                    case "-":
+                       
+                        cal._CalculateEvent += cal.GetDifference;
+                       
+                        result = cal.GetDifference(num1, num2);
+                       
+                        cal._CalculateEvent -= cal.GetDifference;
+                        break;
 
+                    case "*":
+                        
+                        cal._CalculateEvent += cal.GetProduct;
+                       
+                        result = cal.GetProduct(num1, num2);
+                       
+                        cal._CalculateEvent -= cal.GetProduct;
+                        break;
 
-                cal._CalculateEvent -= cal.GetSum;
-                cal._CalculateEvent -= cal.GetDifference;
+                    case "/":
+                       
+                        cal._CalculateEvent += cal.GetQuotient;
+                        
+                        result = cal.GetQuotient(num1, num2);
+                       
+                        cal._CalculateEvent -= cal.GetQuotient;
+                        break;
+
+                    default:
+                        MessageBox.Show("Please select a valid arithmetic operator.", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return; 
+                }
+
+              
+                textBox1.Text = result.ToString();
             }
             catch (FormatException)
             {
                 MessageBox.Show("Please enter valid numbers in both text boxes.", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            catch (DivideByZeroException ex)
+            {
+                MessageBox.Show(ex.Message, "Calculation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
             catch (Exception ex)
             {
                 MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
