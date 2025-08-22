@@ -9,9 +9,28 @@ namespace CalculatorApplication
 
     internal class CalculatorClass
     {
-        public delegate T Formula<T>(T arg1);
+        public delegate T Formula<T>(T arg1, T arg2);
 
-        public Formula<string> info;
+        private Formula<double> _calculateEvent;
+
+        public event Formula<double> _CalculateEvent
+        {
+
+            add
+            {
+
+                Console.WriteLine("Added the Delegate");
+                _calculateEvent += value;
+            }
+
+            remove
+            {
+
+                Console.WriteLine("Removed the Delegate");
+                _calculateEvent -= value;
+            }
+        }
+
 
         public double GetSum(double a, double b)
         {
@@ -22,7 +41,10 @@ namespace CalculatorApplication
         {
             return a - b;
         }
+
+       
+        }
+
     }
 
-}
 
