@@ -134,6 +134,7 @@
             this.Controls.Add(this.txtBoxInput1);
             this.Name = "FrmCalculator";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.FrmCalculator_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
